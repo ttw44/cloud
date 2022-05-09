@@ -1,0 +1,110 @@
+/* NAVIGATION styles */
+
+/* Header styles */
+.header-box {
+    background-color: var(--cambridge-blue);
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07)
+  ;
+    position: relative;
+    height: 185px;
+  }
+  
+
+/* Nav positioning, color */
+.nav-bar {
+    background-color: var(--pale-spring-bud-2);
+    float: right;
+    width: 640px;
+
+    position: absolute;
+    right: 0px;
+    bottom: 30px;
+}
+
+/* Sets the background for the entire navigation bar */
+.nav-list {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #bbb;
+    box-shadow:
+      2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+      12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      100px 100px 80px rgba(0, 0, 0, 0.07)
+      ;
+}
+
+/* Sets the styles for each of the nav elements */
+.nav-list-item {
+	display: inline;
+	float: left;
+    border-right: 1px solid #bbb;
+}
+
+.nav-list-item#username {
+  border: none;
+  color: green;
+  display: block;
+  padding: 8px 8px;
+}
+
+.nav-list-item#username > div {  
+  width: 180px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-list-item#signin, .nav-list-item#signout {
+	float: right;
+}
+
+
+.nav-list-item:last-child {
+    border-left: 1px solid #bbb;
+}
+
+/* Sets the styles for each of the links */
+.nav-list-item > a {
+  color: black;
+  display: block;
+
+  text-decoration: none;
+  text-align: center;
+
+  font-weight: bold;
+
+  padding: 8px 8px;
+  cursor: pointer;
+}
+
+.nav-list-item > a:visited {
+  color: black;
+	background-color: var(--eton-blue-2);
+}
+
+.nav-list-item > a:hover {
+  color: black;
+	background-color: var(--eton-blue);
+}
+
+.nav-list-item > a:active {
+  color: black;
+	background-color: red;
+}
+
+/* Image style */
+img.logo#logo {
+  height: 100%;
+  width: auto;
+  max-width: 180px;
+}

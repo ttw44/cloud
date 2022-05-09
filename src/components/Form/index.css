@@ -1,0 +1,29 @@
+.formfield {
+    margin: 10px;
+    display: flex;
+    text-align: center;
+}
+
+.formfield > legend {
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.list {
+    min-width: 208px;
+}
+
+.button#delbutton {
+    font-style: normal;
+
+
+  border: none;
+  border-radius: 6px;
+
+  float: right;
+}
+
+.button#gen {
+    display: block;
+    margin: 0 auto;
+}

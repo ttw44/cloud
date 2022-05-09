@@ -1,0 +1,26 @@
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+
+    text-align: right;
+    padding: 15px;
+}
+
+h2 {
+    font-size: 2.0em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.sec {
+    margin-left: 15px;
+}
+
+.pg {
+    padding-left: 15px;
+    padding-right: 25px;
+}
