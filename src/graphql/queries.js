@@ -1,30 +1,40 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const getCollege1 = /* GraphQL */ `
+  query GetCollege1($ID: Int!) {
+    getCollege1(ID: $ID) {
+      ID
+      CollegeName
+      SAT
+      ACT
+      Tuition
+      Meal
+      Room
+      Majors
+      Minors
+      Sports
     }
   }
 `;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
+export const listCollege1S = /* GraphQL */ `
+  query ListCollege1S(
+    $filter: TableCollege1FilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCollege1S(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
-        name
-        description
-        createdAt
-        updatedAt
+        ID
+        CollegeName
+        SAT
+        ACT
+        Tuition
+        Meal
+        Room
+        Majors
+        Minors
+        Sports
       }
       nextToken
     }

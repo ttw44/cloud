@@ -1,45 +1,51 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    createTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const createCollege1 = /* GraphQL */ `
+  mutation CreateCollege1($input: CreateCollege1Input!) {
+    createCollege1(input: $input) {
+      ID
+      CollegeName
+      SAT
+      ACT
+      Tuition
+      Meal
+      Room
+      Majors
+      Minors
+      Sports
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    updateTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const updateCollege1 = /* GraphQL */ `
+  mutation UpdateCollege1($input: UpdateCollege1Input!) {
+    updateCollege1(input: $input) {
+      ID
+      CollegeName
+      SAT
+      ACT
+      Tuition
+      Meal
+      Room
+      Majors
+      Minors
+      Sports
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    deleteTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const deleteCollege1 = /* GraphQL */ `
+  mutation DeleteCollege1($input: DeleteCollege1Input!) {
+    deleteCollege1(input: $input) {
+      ID
+      CollegeName
+      SAT
+      ACT
+      Tuition
+      Meal
+      Room
+      Majors
+      Minors
+      Sports
     }
   }
 `;

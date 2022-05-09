@@ -2,8 +2,174 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
+type College1 {
+	ID: Int!
+	CollegeName: String!
+	SAT: Int!
+	ACT: Int!
+	Tuition: Int!
+	Meal: Int!
+	Room: Int!
+	Majors: [String!]!
+	Minors: [String!]!
+	Sports: [String!]!
+}
+
+type College1Connection {
+	items: [College1]
+	nextToken: String
+}
+
+input College1Input {
+	SAT: Int!
+	ACT: Int!
+	Tuition: Int!
+	Meal: Int!
+	Room: Int!
+}
+
+type CollegeOutput {
+	DateTime: AWSDateTime!
+	CollegeName: String!
+	SAT: Int!
+	ACT: Int!
+	Tuition: Int!
+	Meal: Int!
+	Room: Int!
+	Majors: [String!]!
+	Minors: [String!]!
+	Sports: [String!]!
+}
+
+input CreateCollege1Input {
+	ID: Int!
+	SAT: Int!
+	ACT: Int!
+	Tuition: Int!
+	Meal: Int!
+	Room: Int!
+	Majors: [String!]!
+	Minors: [String!]!
+	Sports: [String!]!
+}
+
+input DeleteCollege1Input {
+	ID: Int!
+}
+
+type Mutation {
+	createCollege1(input: CreateCollege1Input!): College1
+	updateCollege1(input: UpdateCollege1Input!): College1
+	deleteCollege1(input: DeleteCollege1Input!): College1
+}
+
+type Query {
+	getCollege1(ID: Int!): College1
+	listCollege1S(filter: TableCollege1FilterInput, limit: Int, nextToken: String): College1Connection
+}
+
+type Subscription {
+	onCreateCollege1(
+		ID: Int,
+		SAT: Int,
+		ACT: Int,
+		Tuition: Int,
+		Meal: Int
+	): College1
+		@aws_subscribe(mutations: ["createCollege1"])
+	onUpdateCollege1(
+		ID: Int,
+		SAT: Int,
+		ACT: Int,
+		Tuition: Int,
+		Meal: Int
+	): College1
+		@aws_subscribe(mutations: ["updateCollege1"])
+	onDeleteCollege1(
+		ID: Int,
+		SAT: Int,
+		ACT: Int,
+		Tuition: Int,
+		Meal: Int
+	): College1
+		@aws_subscribe(mutations: ["deleteCollege1"])
+}
+
+input TableBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input TableCollege1FilterInput {
+	ID: TableIntFilterInput
+	SAT: TableIntFilterInput
+	ACT: TableIntFilterInput
+	Tuition: TableIntFilterInput
+	Meal: TableIntFilterInput
+	Room: TableIntFilterInput
+	Majors: TableStringFilterInput
+	Minors: TableStringFilterInput
+	Sports: TableStringFilterInput
+}
+
+input TableFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input TableIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input TableIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+input TableStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+input UpdateCollege1Input {
+	ID: Int!
+	SAT: Int
+	ACT: Int
+	Tuition: Int
+	Meal: Int
+	Room: Int
+	Majors: [String!]
+	Minors: [String!]
+	Sports: [String!]
 }
