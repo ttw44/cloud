@@ -1,5 +1,5 @@
 projects:
-  My CollegeData API:
+  collegeamplify:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
@@ -10,9 +10,6 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
-        region: us-east-1
-        apiId: 66nejq6w5jattakgngec75mjvm
-        maxDepth: 2
 extensions:
   amplify:
     version: 3

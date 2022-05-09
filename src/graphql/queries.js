@@ -1,6 +1,22 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const users = /* GraphQL */ `
+  query Users {
+    users {
+      id
+      name
+    }
+  }
+`;
+export const user = /* GraphQL */ `
+  query User($id: ID!) {
+    user(id: $id) {
+      id
+      name
+    }
+  }
+`;
 export const getCollege1 = /* GraphQL */ `
   query GetCollege1($ID: Int!) {
     getCollege1(ID: $ID) {

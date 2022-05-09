@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './index.css'
 
 import { getCollege1 } from '../../graphql/queries'
-import { API } from 'aws-amplify';
+import { API, graphqlOperation  } from 'aws-amplify';
 
 
 
@@ -119,13 +119,16 @@ class Form extends Component {
     // 3. Upload them to private S3 Bucket for this User
     // 4. Redirect to yourcolleges
 
-    const result = await API.graphql(getCollege1, {
+    const result = await API.graphql(graphqlOperation(getCollege1, {
       input: {
         ID: 10
       }
-    })
-
-    console.log(result);
+    })).then(response =>
+      {
+        console.log(response);
+      }).catch(e => {
+        console.log(e);
+      })
 
     e.preventDefault();
   };
