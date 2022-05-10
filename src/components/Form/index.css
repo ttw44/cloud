@@ -10,7 +10,7 @@
 }
 
 .list {
-    min-width: 208px;
+    min-width: 33%;
 }
 
 .button#delbutton {
@@ -23,7 +23,17 @@
   float: right;
 }
 
+.button#rmv {
+    float: right;
+    margin-right: 50px;
+}
+
 .button#gen {
     display: block;
     margin: 0 auto;
+}
+
+.bad {
+    text-align: center;
+    color: darkred;
 }

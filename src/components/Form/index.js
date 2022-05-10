@@ -1,26 +1,29 @@
 import React, { Component } from "react";
+import Result from '../Result'
 import './index.css'
 
-import { getCollege1 } from '../../graphql/queries'
-import { API, graphqlOperation  } from 'aws-amplify';
+import Amplify, { API, graphqlOperation  } from 'aws-amplify';
 
+import awsExports from '../../aws-exports';
+import { TopThree } from '../../graphql/topthree'
 
+Amplify.configure(awsExports);
 
-export const pref = {
-    act: 0,
-    sat: 0,
-    tuition: 0,
-    room: 0,
-    meal: 0,
-    majors: [{ major: "" }],
-    minors: [{ minor: "" }],
-    sports: [{ sport: "" }]
-}
 
 class Form extends Component {
   constructor() {
     super();
-    this.state = pref;
+    this.state = { act: "",
+      sat: "",
+      tuition: "",
+      room: "",
+      meal: "",
+      majors: [{ major: "" }],
+      minors: [{ minor: "" }],
+      sports: [{ sport: "" }],
+      showresults: false,
+      result: {},
+      err: false };
   }
 
   AddMajor = () => {
@@ -84,57 +87,89 @@ class Form extends Component {
   };
 
   handleSATChange = (evt) => {
+    let { value, min, max } = evt.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
     this.setState({
-      sat: evt.target.value,
+      sat: value,
     });
   };
 
   handleACTChange = (evt) => {
+    let { value, min, max } = evt.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
     this.setState({
-      act: evt.target.value,
+      act: value,
     });
   };
 
   handleTuitionChange = (evt) => {
+    let { value, min, max } = evt.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
     this.setState({
-      tuition: evt.target.value,
+      tuition: value,
     });
   };
 
   handleRoomChange = (evt) => {
+    let { value, min, max } = evt.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
     this.setState({
-      room: evt.target.value,
+      room: value,
     });
   };
 
   handleMealChange = (evt) => {
+    let { value, min, max } = evt.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
     this.setState({
-      meal: evt.target.value,
+      meal: value,
+    });
+  };
+
+  handleShowChange = (boo) => {
+    this.setState({
+      showresults: boo, error: false
     });
   };
 
   submit = async (e) => {
-    // 1. Make call to DynamoDB for Colleges
-    // 2. Get results 
-    // 3. Upload them to private S3 Bucket for this User
-    // 4. Redirect to yourcolleges
-
-    const result = await API.graphql(graphqlOperation(getCollege1, {
-      input: {
-        ID: 10
-      }
-    })).then(response =>
-      {
-        console.log(response);
-      }).catch(e => {
-        console.log(e);
-      })
-
     e.preventDefault();
+    const show = this.state.showresults;
+    if (!show) {
+      // 1. Make call to DynamoDB for Colleges
+      // 2. Get results 
+      let bufferresult;
+      try {
+          bufferresult = await API.graphql(graphqlOperation(TopThree, {
+            act: this.state.act,
+            sat: this.state.sat,
+            tuition: this.state.tuition,
+            meal: this.state.meal,
+            room: this.state.room
+          }));
+      } catch(err) {
+        console.log(err);
+      }
+      /* Determines if the bufferresult had bad result */
+      if (bufferresult === undefined) {
+        this.setState({error: true});
+        console.log("Bad input");
+        return;
+      }
+      this.setState({ showresults: true });
+      this.setState({ error: false});
+      this.setState({result : { ...bufferresult } });
+      console.log(bufferresult);
+    }
   };
 
   render() {
+    const show = this.state.showresults;
+    const res = this.state.result;
+    const err = this.state.error;
     return (
+
+      <div>
       <form className="collegeform" onSubmit={this.submit}>
         <fieldset className="formfield">
           <legend>Test scores</legend>
@@ -148,6 +183,8 @@ class Form extends Component {
             placeholder="Your ACT score..."
             value={this.state.act}
             onChange={this.handleACTChange}
+            min="0"
+            max="35"
           />
           <input
             onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
@@ -155,6 +192,8 @@ class Form extends Component {
             placeholder="Your SAT score..."
             value={this.state.sat}
             onChange={this.handleSATChange}
+            min="0"
+            max="1600"
           />
         </fieldset>
         <fieldset className="formfield">
@@ -166,6 +205,8 @@ class Form extends Component {
             placeholder="Your tuition budget..."
             value={this.state.tuition}
             onChange={this.handleTuitionChange}
+            min="0"
+            max="1000000"
           />
           <input
             onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
@@ -173,6 +214,8 @@ class Form extends Component {
             placeholder="Your room & board budget..."
             value={this.state.room}
             onChange={this.handleRoomChange}
+            min="0"
+            max="1000000"
           />
           <input
             onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
@@ -180,6 +223,8 @@ class Form extends Component {
             placeholder="Your meal budget..."
             value={this.state.meal}
             onChange={this.handleMealChange}
+            min="0"
+            max="1000000"
           />
         </fieldset>
         <fieldset className="formfield">
@@ -277,6 +322,22 @@ class Form extends Component {
           Generate Top Colleges
         </button>
       </form>
+            <div>
+              {
+                (show === true && err === false) &&
+                <div>
+                  <button type="button" className="button" id="rmv" onClick={() => {this.handleShowChange(false)}}>Remove Results</button>
+                  <Result json={res} />
+                </div>
+              }
+              {
+                err === true &&
+                <div className="results">
+                  <h2 className="bad">Please enter valid input, silly goose!</h2>
+                </div>
+              }
+            </div>
+      </div>
     );
   }
 }

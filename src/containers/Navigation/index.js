@@ -21,7 +21,6 @@ const Navigation = ({signOut, user}) => {
             <nav className="nav-bar">
                 <ul className="nav-list">
                     <li className="nav-list-item" id="home"><Link to="/"><i className="fa-solid fa-house-chimney"></i> Home</Link></li>
-                    <li className="nav-list-item" id="yourcolleges"><Link to="/colleges"><i className="fa-solid fa-building-columns"></i> Your Colleges</Link></li>
                     <li className="nav-list-item" id="about"><Link to="/about"><i className="fa-solid fa-address-card"></i> About Us</Link></li>
                     <li className="nav-list-item" id="username"><div><i className="fa-solid fa-user-check"></i> {user.username}</div></li>
                     <li className="nav-list-item" id="signout"><a onClick={signOut}><i className="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a></li>

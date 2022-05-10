@@ -3,12 +3,11 @@
 
 /* Set the root colors of the webpage. */
 :root {
-  /* CSS HEX */
-  --pale-spring-bud: #edeec9ff; /* Background Color */
-  --pale-spring-bud-2: #dde7c7ff; /*Semi-Background Color */
-  --cambridge-blue: #bfd8bdff; /* Foreground Color */
-  --eton-blue: #98c9a3ff; /* Semi Foreground Color */
-  --eton-blue-2: #77bfa3ff; /* Other Foreground Color */
+  --dark-jungle-green: #182825ff;
+  --spanish-blue: #016fb9ff;
+  --pacific-blue: #22aed1ff;
+  --light-slate-gray: #6d8ea0ff;
+  --khaki-web: #afa98dff;
 }
 
 html {
@@ -16,12 +15,11 @@ html {
 }
 
 body {
-  background-color: var(--pale-spring-bud);
+  background-color: var(--khaki-web);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,14 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUser = /* GraphQL */ `
-  mutation CreateUser($name: String!) {
-    createUser(name: $name) {
-      id
-      name
-    }
-  }
-`;
 export const createCollege1 = /* GraphQL */ `
   mutation CreateCollege1($input: CreateCollege1Input!) {
     createCollege1(input: $input) {

@@ -2,7 +2,7 @@
 
 /* Header styles */
 .header-box {
-    background-color: var(--cambridge-blue);
+    background-color: var(--spanish-blue);
     box-shadow:
     2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
     6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
@@ -12,15 +12,15 @@
     100px 100px 80px rgba(0, 0, 0, 0.07)
   ;
     position: relative;
-    height: 185px;
+    height: 300px;
   }
   
 
 /* Nav positioning, color */
 .nav-bar {
-    background-color: var(--pale-spring-bud-2);
+    background-color: var(--pacific-blue);
     float: right;
-    width: 640px;
+    width: 840px;
 
     position: absolute;
     right: 0px;
@@ -94,7 +94,7 @@
 
 .nav-list-item > a:hover {
   color: black;
-	background-color: var(--eton-blue);
+	background-color: var(--dark-jungle-green);
 }
 
 .nav-list-item > a:active {
@@ -106,5 +106,4 @@
 img.logo#logo {
   height: 100%;
   width: auto;
-  max-width: 180px;
 }
